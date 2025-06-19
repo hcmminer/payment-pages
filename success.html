@@ -160,9 +160,89 @@
             <p>3. Bắt đầu sử dụng các tính năng Premium!</p>
         </div>
         
+        <button onclick="closeAndRefresh()" class="button" style="margin-top: 20px;">
+            Đóng và Refresh Extension
+        </button>
+        
         <div class="footer">
             <p>Nếu có vấn đề gì, vui lòng liên hệ support@example.com</p>
         </div>
     </div>
+
+    <script>
+        // Tự động đóng tab sau 3 giây và thông báo extension refresh
+        setTimeout(() => {
+            // Gửi message đến extension để refresh
+            try {
+                // Gửi message đến tất cả các tab extension
+                window.postMessage({
+                    type: 'PAYMENT_SUCCESS',
+                    action: 'refresh_settings'
+                }, '*');
+                
+                // Thử gửi message đến parent window (nếu có)
+                if (window.opener) {
+                    window.opener.postMessage({
+                        type: 'PAYMENT_SUCCESS',
+                        action: 'refresh_settings'
+                    }, '*');
+                    
+                    // Gửi message đến background script của extension
+                    if (window.opener.chrome && window.opener.chrome.runtime) {
+                        window.opener.chrome.runtime.sendMessage({
+                            type: 'REFRESH_SETTINGS'
+                        });
+                    }
+                }
+            } catch (e) {
+                console.log('Không thể gửi message:', e);
+            }
+            
+            // Đóng tab hiện tại
+            window.close();
+        }, 3000);
+        
+        // Nếu người dùng muốn đóng ngay
+        function closeTab() {
+            window.close();
+        }
+        
+        // Thêm nút đóng ngay
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('.button');
+            if (button) {
+                button.onclick = closeTab;
+            }
+        });
+
+        function closeAndRefresh() {
+            closeTab();
+            // Gửi message đến extension để refresh
+            try {
+                // Gửi message đến tất cả các tab extension
+                window.postMessage({
+                    type: 'PAYMENT_SUCCESS',
+                    action: 'refresh_settings'
+                }, '*');
+                
+                // Thử gửi message đến parent window (nếu có)
+                if (window.opener) {
+                    window.opener.postMessage({
+                        type: 'PAYMENT_SUCCESS',
+                        action: 'refresh_settings'
+                    }, '*');
+                    
+                    // Gửi message đến background script của extension
+                    if (window.opener.chrome && window.opener.chrome.runtime) {
+                        window.opener.chrome.runtime.sendMessage({
+                            type: 'REFRESH_SETTINGS'
+                        });
+                    }
+                }
+            } catch (e) {
+                console.log('Không thể gửi message:', e);
+            }
+        }
+    </script>
 </body>
 </html> 
