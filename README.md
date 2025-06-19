@@ -22,18 +22,7 @@ Upload các file sau vào repository:
 5. Folder: chọn "/ (root)"
 6. Click "Save"
 
-### 4. Cập nhật Extension ID
-**Quan trọng:** Bạn cần thay thế `YOUR_EXTENSION_ID_HERE` bằng Extension ID thực tế:
-
-1. Mở Chrome → `chrome://extensions/`
-2. Bật Developer mode
-3. Load extension từ thư mục `frontend`
-4. Copy Extension ID (dãy ký tự dài màu xanh)
-5. Thay thế `YOUR_EXTENSION_ID_HERE` trong các file:
-   - `success.html` (dòng có link "Quay lại Extension")
-   - `cancel.html` (2 dòng có link "Thử lại" và "Quay lại Extension")
-
-### 5. Cập nhật URL trong backend
+### 4. Cập nhật URL trong backend
 Sau khi GitHub Pages được kích hoạt, URL sẽ có dạng:
 ```
 https://yourusername.github.io/payment-pages/
@@ -45,7 +34,7 @@ success_url: `https://yourusername.github.io/payment-pages/success.html?session_
 cancel_url: `https://yourusername.github.io/payment-pages/cancel.html`,
 ```
 
-### 6. Test
+### 5. Test
 - Truy cập: `https://yourusername.github.io/payment-pages/success.html`
 - Truy cập: `https://yourusername.github.io/payment-pages/cancel.html`
 
@@ -74,6 +63,6 @@ Bạn có thể tùy chỉnh:
 
 ## Lưu ý
 
-- **Đảm bảo Extension ID chính xác** - đây là bước quan trọng nhất
+- Đảm bảo extension ID trong các link là chính xác
 - Test kỹ trước khi deploy production
 - Có thể thêm loading animation và transition effects 
