@@ -107,6 +107,31 @@
             color: #9ca3af;
             font-size: 14px;
         }
+        .info-box {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .info-box h3 {
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .info-box p {
+            color: #6b7280;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .info-box p::before {
+            content: "✓";
+            color: #10b981;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -128,9 +153,12 @@
         
         <p>Bạn có thể đóng tab này và quay lại extension để bắt đầu sử dụng các tính năng Premium.</p>
         
-        <a href="chrome-extension://eagjeaegimlndmemfgpfhkpmmjfclbnk/settings.html" class="button">
-            Quay lại Extension
-        </a>
+        <div class="info-box">
+            <h3>📋 Hướng dẫn:</h3>
+            <p>1. Đóng tab này</p>
+            <p>2. Click vào icon extension trên thanh công cụ Chrome</p>
+            <p>3. Bắt đầu sử dụng các tính năng Premium!</p>
+        </div>
         
         <div class="footer">
             <p>Nếu có vấn đề gì, vui lòng liên hệ support@example.com</p>
